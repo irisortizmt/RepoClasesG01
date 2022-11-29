@@ -37,4 +37,19 @@ router.get("/nombre", (req, res) =>{
     res.json(usuario.nombre)
 })
 
+router.get("/agrupar", (req, res) =>{
+    //Implementar el codigo:
+    res.send("Usted esta en la pestaña de AGRUPAR!")
+})
+
+router.get("/agrupar/:args", (req, res) =>{
+    let nombres = req.params.args
+    nombres = nombres.split(" ")
+    //nombres = Juan,Pedro,Camilo
+    //nombres = ["Juan", "Pedro", "Camilo"]
+    res.json(nombres)
+})
+
+
+
 export default router

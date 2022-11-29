@@ -1,6 +1,6 @@
 import express from "express"
 
-let router = express.Router
+let router = express.Router()
 
 //localhost:3000/home...
 

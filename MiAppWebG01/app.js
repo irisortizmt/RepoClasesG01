@@ -41,7 +41,7 @@ res.redirect("/home/G01")
  })
 
 app.use("/usuario",UserRouter)
-app.use("/home",homeRouter)
+app.use("/home", homeRouter)
 
 
     
