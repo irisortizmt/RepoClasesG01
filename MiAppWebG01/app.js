@@ -1,6 +1,7 @@
 import express from "express";
 import UserRouter from "./routes/UserRouter.js";
 import homeRouter from "./routes/home.js";
+
 const app = express();
 const puerto = 3000;
 
@@ -40,6 +41,7 @@ app.get("/direccion", (req, res) =>{
 res.redirect("/home/G01")
  })
 
+app.use(express.json())
 app.use("/usuario",UserRouter)
 app.use("/home", homeRouter)
 

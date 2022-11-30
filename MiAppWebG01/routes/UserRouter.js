@@ -37,6 +37,11 @@ router.get("/nombre", (req, res) =>{
     res.json(usuario.nombre)
 })
 
+router.get("/:nombre", (req, res) =>{
+    let nombre = req.params.nombre
+    res.send("Usted esta buscando al usuario: "+ nombre)
+})
+
 router.get("/agrupar", (req, res) =>{
     //Implementar el codigo:
     res.send("Usted esta en la pestaña de AGRUPAR!")
