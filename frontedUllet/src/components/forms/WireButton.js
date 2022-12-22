@@ -8,10 +8,8 @@ function alerta(mensaje) {
 export default function Button(props) {
   const { children, onClick, type } = props;
   return (
-    <button className="button" type={type} onClick={onClick}>
-      <b>
-        {children}
-      </b>
+    <button className="wire-button" type={type} onClick={onClick}>
+      {children}
     </button>
   );
 }

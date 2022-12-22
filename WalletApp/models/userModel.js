@@ -5,7 +5,7 @@ import mongoose from "mongoose";
     "estado": String
 })*/
 
-//const ciudadesPosibles = ["Bogotá", "Cali", "Medellin", "Barranquilla", "Bucaramanga"]
+const ciudadesPosibles = ["Bogotá", "Cali", "Medellin", "Barranquilla", "Bucaramanga"]
 
 const userModel = mongoose.Schema({
   nombre: { type: String, required: true },
@@ -16,6 +16,7 @@ const userModel = mongoose.Schema({
     type: String,
     required: true,
   },
+  ciudad:{type:String, required:true, enum:ciudadesPosibles}
 });
 
 // VALIDACION

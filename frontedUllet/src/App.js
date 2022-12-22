@@ -1,26 +1,27 @@
 import React, { useState } from "react";
-import Button from "./components/forms/Button";
+import { Link, Route, Routes } from "react-router-dom";
+
 import "./assets/global.css";
-import Login from "./components/Login";
+
+import Users from "./views/Users";
+import User from "./views/User";
+import NewUser from "./views/NewUser";
+import Nav from "./components/Nav";
+import Home from "./views/Home/Home";
+import Login from "./views/Login/Login";
 
 export default function App() {
-  const [contador, setcontador] = useState(0);
 
-  function incrementar() {
-    setcontador(contador + 1);
-    console.log(contador);
-  }
-
-  function reiniciar() {
-    setcontador(0);
-  }
 
   return (
     <div>
-      <Login></Login>
-      <p>Contador:{contador}</p>
-      <Button onClick={incrementar}>Incrementar</Button>
-      <Button onClick={reiniciar}>Reiniciar</Button>
+      <Nav></Nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/about" element={<p className="container">Esta es la mejor cartera virtual del momento</p>} />
+        
+      </Routes>
     </div>
   );
 }

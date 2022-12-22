@@ -4,11 +4,6 @@ import bcrypt from "bcrypt";
 export async function createUser(req, res) {
   //IMPLEMENTAR AQUI
 
-  const usuario = req.body.usuario;
-  const { password } = usuario;
-  const encriptedPassword = await bcrypt.hash(password, 10);
-  usuario.password = encriptedPassword;
-
   // if (usuario == null){
   //     res.status(200).json({
   //         "error": "Falta el objeto usuario en el cuerpo de la peticion"
@@ -17,21 +12,38 @@ export async function createUser(req, res) {
   // }
 
   //Conexion con la base de datos y error de validacion de todos los campos
-  let documento;
+  
   try {
-    documento = await userModel.create(usuario);
+    const usuario = req.body.usuario;
+    const { password } = usuario;
+    const encriptedPassword = await bcrypt.hash(password, 10);
+    usuario.password = encriptedPassword;
+    const documento = await userModel.create(usuario);
+    res.status(201).json(documento);
   } catch (error) {
     res.status(400).json(error.message);
     return;
   }
-  res.status(201).json(documento);
 }
+
 
 export async function readUser(req, res) {
   const id = req.params.id;
   let documento;
   try {
     documento = await userModel.findOne({ _id: id });
+  } catch (error) {
+    res.status(400).json(error.message);
+    return;
+  }
+  res.status(200).json(documento);
+}
+
+export async function userList(req, res) {
+ 
+  let documento;
+  try {
+    documento = await userModel.find({},{_id:0, password:0, _v:0} );
   } catch (error) {
     res.status(400).json(error.message);
     return;

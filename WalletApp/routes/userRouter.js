@@ -1,5 +1,5 @@
 import express from "express"
-import { createUser, deleteUser, readUser, updateUser } from "../controllers/userController.js"
+import { createUser, deleteUser, readUser, updateUser, userList } from "../controllers/userController.js"
 
 const userRouter = express.Router()
 
@@ -8,6 +8,9 @@ const userRouter = express.Router()
 userRouter.post("/", (req, res) =>{
     createUser(req, res)    
 })
+
+userRouter.get("/list", userList)
+
 
 //LEER:GET
 userRouter.get("/:id", (req, res) =>{
